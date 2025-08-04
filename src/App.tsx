@@ -7,6 +7,7 @@ import { Home } from "./pages/Home";
 import { CreateMovie } from "./pages/CreateMovie";
 import { MyMovies } from "./pages/MyMovies";
 import { Player } from "./pages/Player";
+import GenerateOscarMovies from "./pages/GenerateOscarMovies";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/create" element={<CreateMovie />} />
           <Route path="/my-movies" element={<MyMovies />} />
           <Route path="/player/:movieId" element={<Player />} />
+          <Route path="/generate-oscar" element={<GenerateOscarMovies />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
