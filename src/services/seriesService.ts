@@ -68,13 +68,20 @@ export class SeriesService {
     EPISÓDIO: Temporada ${season}, Episódio ${episode}
     ${request.customPrompt ? `Universo da série: ${request.customPrompt}` : ''}
     
+    ESTRUTURA OBRIGATÓRIA DE 3 ATOS POR EPISÓDIO:
+    - ATO 1 (Abertura - primeiros 25% das cenas): Gancho inicial, relembrança necessária, estabelecimento do conflito do episódio
+    - ATO 2 (Desenvolvimento - 50% das cenas): Progressão do conflito, desenvolvimento de personagens, obstáculos crescentes
+    - ATO 3 (Resolução - últimos 25% das cenas): Clímax do episódio, resolução e gancho para próximos episódios
+    
     PADRÃO NETFLIX DE EXCELÊNCIA:
-    - Cada episódio deve ter um arco narrativo completo
+    - Cada episódio deve ter um arco narrativo completo seguindo os 3 atos
     - Desenvolver personagens de forma consistente entre episódios
     - Criar tensão e cliffhangers quando apropriado
     - Diálogos autênticos e envolventes
     - Ritmo cinematográfico profissional
     - Continuidade narrativa entre episódios
+    - ZERO repetição de situações, cenários ou diálogos
+    - Cada episódio deve ter identidade única dentro da série
     
     Retorne um JSON com:
     {
@@ -113,16 +120,20 @@ export class SeriesService {
       ]
     }
     
-    MANDATÓRIOS PARA QUALIDADE:
-    - Gere EXATAMENTE ${numberOfScenes} cenas COMPLETAMENTE diferentes
-    - ZERO repetição de texto ou descrições visuais
-    - Construa uma narrativa episódica coerente do início ao fim
-    - Varie tipos de cena: revelações, conflitos, desenvolvimento, ação, suspense
+    MANDATÓRIOS PARA ESTRUTURA DE 3 ATOS:
+    - Gere EXATAMENTE ${numberOfScenes} cenas divididas em 3 atos:
+      * ATO 1: ${Math.floor(numberOfScenes * 0.25)} cenas (abertura e estabelecimento do conflito)
+      * ATO 2: ${Math.floor(numberOfScenes * 0.5)} cenas (desenvolvimento e confrontos)
+      * ATO 3: ${numberOfScenes - Math.floor(numberOfScenes * 0.25) - Math.floor(numberOfScenes * 0.5)} cenas (clímax e resolução)
+    - ZERO repetição de texto, situações ou descrições visuais
+    - Construa uma narrativa episódica coerente seguindo os 3 atos
+    - Varie tipos de cena: revelações, conflitos, desenvolvimento, ação, suspense, resolução
     - Mantenha a consistência visual dos personagens usando visualPrompts
     - Inclua diálogos naturais e específicos da situação
     - Cada cena deve contribuir para o arco do episódio
     - Português brasileiro fluente e autêntico
-    - Crie momentos cinematográficos memoráveis`;
+    - Crie momentos cinematográficos memoráveis
+    - Cada ato deve ter ritmo e intensidade apropriados`;
 
     const response = await fetch(MISTRAL_API_URL, {
       method: "POST",
@@ -163,9 +174,29 @@ export class SeriesService {
       const scriptScene = scriptScenes[i];
       
       try {
-        // Gerar imagem usando a descrição visual detalhada
+        // Gerar imagem usando API interna sem marca d'água
         const visualPrompt = scriptScene.visualDescription || scriptScene.prompt;
-        const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(visualPrompt + " cinematic, high quality, detailed")}?model=flux&width=1024&height=1024`;
+        const enhancedPrompt = `${visualPrompt}, cinematic composition, high quality, detailed, professional cinematography, episode scene`;
+        
+        // Usar API de geração integrada
+        const response = await fetch('/api/generate-image', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            prompt: enhancedPrompt,
+            width: 1024,
+            height: 1024,
+            model: 'flux.schnell'
+          }),
+        });
+
+        let imageUrl = "/placeholder.svg";
+        if (response.ok) {
+          const data = await response.json();
+          imageUrl = data.imageUrl || "/placeholder.svg";
+        }
         
         scenes.push({
           id: crypto.randomUUID(),
@@ -178,7 +209,7 @@ export class SeriesService {
         });
         
         // Pequena pausa para não sobrecarregar a API
-        await new Promise(resolve => setTimeout(resolve, 200));
+        await new Promise(resolve => setTimeout(resolve, 500));
       } catch (error) {
         console.error(`Erro ao gerar cena ${i + 1}:`, error);
         scenes.push({

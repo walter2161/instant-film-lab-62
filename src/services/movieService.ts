@@ -44,12 +44,19 @@ export class MovieService {
     const prompt = `Você é um roteirista especialista da Netflix. Crie um roteiro cinematográfico de alta qualidade para um ${request.genre} no estilo ${request.style} com duração de ${request.duration}.
     ${request.customPrompt ? `Tema específico: ${request.customPrompt}` : ''}
     
+    ESTRUTURA OBRIGATÓRIA DE 3 ATOS:
+    - ATO 1 (Apresentação - primeiros 25% das cenas): Estabeleça o mundo, personagens, conflito inicial e incidente incitante
+    - ATO 2 (Confronto - 50% das cenas): Desenvolva conflitos, obstáculos crescentes, desenvolvimento de personagens e clímax do meio
+    - ATO 3 (Resolução - últimos 25% das cenas): Clímax final, resolução de conflitos e conclusão satisfatória
+    
     CRITÉRIOS DE QUALIDADE NETFLIX:
-    - Narrativa envolvente com arcos dramáticos bem definidos
+    - Narrativa envolvente com arcos dramáticos bem definidos seguindo os 3 atos
     - Diálogos naturais e cativantes entre personagens
-    - Progressão clara da história com tensão crescente
-    - Personagens complexos e bem desenvolvidos
+    - Progressão clara da história com tensão crescente em cada ato
+    - Personagens complexos e bem desenvolvidos ao longo dos atos
     - Cada cena deve avançar a trama de forma significativa
+    - ZERO repetição de situações, diálogos ou descrições visuais
+    - Variação constante de cenários, emoções e tipos de cena
     
     Retorne um JSON com:
     {
@@ -88,16 +95,20 @@ export class MovieService {
       ]
     }
     
-    EXIGÊNCIAS CRÍTICAS:
-    - Gere EXATAMENTE ${numberOfScenes} cenas ÚNICAS e específicas
+    EXIGÊNCIAS CRÍTICAS PARA ESTRUTURA DE 3 ATOS:
+    - Gere EXATAMENTE ${numberOfScenes} cenas ÚNICAS divididas em 3 atos:
+      * ATO 1: ${Math.floor(numberOfScenes * 0.25)} cenas (apresentação do mundo e conflito)
+      * ATO 2: ${Math.floor(numberOfScenes * 0.5)} cenas (desenvolvimento e confrontos)
+      * ATO 3: ${numberOfScenes - Math.floor(numberOfScenes * 0.25) - Math.floor(numberOfScenes * 0.5)} cenas (clímax e resolução)
     - CADA cena deve ter texto e visual COMPLETAMENTE diferentes
-    - Crie uma progressão narrativa clara do início ao fim
+    - Progressão narrativa clara seguindo a estrutura de 3 atos
     - Inclua diálogos realistas entre personagens quando apropriado
-    - Varie tipos de cena: diálogo, ação, suspense, revelação, clímax
+    - Varie tipos de cena: apresentação, conflito, desenvolvimento, ação, suspense, revelação, clímax, resolução
     - Use os visualPrompts dos personagens nas descrições visuais
-    - NUNCA repita textos ou descrições visuais
+    - NUNCA repita textos, situações ou descrições visuais
     - Foque na qualidade cinematográfica de cada momento
-    - Português brasileiro autêntico e natural`;
+    - Português brasileiro autêntico e natural
+    - Cada ato deve ter ritmo e propósito narrativo distintos`;
 
     const response = await fetch(MISTRAL_API_URL, {
       method: "POST",
@@ -138,11 +149,30 @@ export class MovieService {
       const scriptScene = scriptScenes[i];
       
       try {
-        // Gerar imagem usando a descrição visual detalhada
+        // Gerar imagem usando API interna sem marca d'água
         const visualPrompt = scriptScene.visualDescription || scriptScene.prompt;
-        const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(visualPrompt + " cinematic, high quality, detailed")}?model=flux&width=1024&height=1024`;
+        const enhancedPrompt = `${visualPrompt}, cinematic composition, high quality, detailed, professional cinematography, movie scene`;
         
-        // Não usar áudio externo - usar Web Speech API no cliente
+        // Usar API de geração integrada
+        const response = await fetch('/api/generate-image', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            prompt: enhancedPrompt,
+            width: 1024,
+            height: 1024,
+            model: 'flux.schnell'
+          }),
+        });
+
+        let imageUrl = "/placeholder.svg";
+        if (response.ok) {
+          const data = await response.json();
+          imageUrl = data.imageUrl || "/placeholder.svg";
+        }
+        
         scenes.push({
           id: crypto.randomUUID(),
           prompt: visualPrompt,
@@ -154,7 +184,7 @@ export class MovieService {
         });
         
         // Pequena pausa para não sobrecarregar a API
-        await new Promise(resolve => setTimeout(resolve, 200));
+        await new Promise(resolve => setTimeout(resolve, 500));
       } catch (error) {
         console.error(`Erro ao gerar cena ${i + 1}:`, error);
         // Continuar com placeholder se uma cena falhar
