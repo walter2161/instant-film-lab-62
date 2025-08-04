@@ -215,12 +215,12 @@ export class MovieService {
   }
 
   static getAllMovies(): Movie[] {
-    // Combina filmes salvos com filmes em destaque
+    // Combina filmes salvos com filmes em destaque (incluindo os do Oscar)
     const savedMovies = this.getSavedMovies();
-    const { FEATURED_MOVIES } = require("@/data/featuredContent");
+    const { FEATURED_MOVIES_COMPLETE } = require("@/data/featuredContent");
     
     // Remove duplicatas baseado no ID
-    const allMovies = [...FEATURED_MOVIES, ...savedMovies];
+    const allMovies = [...FEATURED_MOVIES_COMPLETE, ...savedMovies];
     const uniqueMovies = allMovies.filter((movie, index, array) => 
       array.findIndex(m => m.id === movie.id) === index
     );

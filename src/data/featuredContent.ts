@@ -1014,3 +1014,530 @@ export const FEATURED_SERIES: Series[] = [
     totalSeasons: 2
   }
 ];
+
+// Filmes baseados em ganhadores do Oscar - Adaptações Brasileiras
+const OSCAR_BASED_MOVIES: Movie[] = [
+  {
+    id: "oscar-1",
+    title: "Parasita: Reflexos",
+    genre: "Thriller Psicológico",
+    style: "Drama Social Brasileiro", 
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'Parasite' (2019). Uma família de classe baixa em São Paulo se infiltra na vida de uma família rica através de empregos domésticos, revelando desigualdades sociais profundas.",
+    characters: [
+      { name: "Carlos Silva", description: "Pai de família desempregado com planos ambiciosos", voice: "alloy" },
+      { name: "Maria Silva", description: "Mãe determinada e estrategista da família", voice: "nova" },
+      { name: "Ricardo Montenegro", description: "Empresário rico e ingênuo de Alphaville", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `parasita-${i+1}`,
+      prompt: `Brazilian social thriller scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20social%20thriller%20scene%20${i+1}%20parasita%20style%20cinema?width=1280&height=720&seed=${5100+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Em uma casa semi-subterrânea de São Paulo, a família Silva planeja sua ascensão social através de um esquema elaborado." : `Cena ${i+1} da trama psicológica que explora as divisões de classe no Brasil contemporâneo.`,
+      visualDescription: `Scene ${i+1}: Brazilian social thriller with class division themes, cinematic composition`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20parasita%20reflexos%20brazilian%20thriller%20social%20drama%209:16%20aspect%20ratio?width=768&height=1366&seed=5001&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-2", 
+    title: "Moonlight: Sob a Lua Carioca",
+    genre: "Drama",
+    style: "Coming-of-age Brasileiro",
+    duration: "2 minutos", 
+    synopsis: "Adaptação brasileira inspirada em 'Moonlight' (2016). Um jovem negro do Rio de Janeiro luta para encontrar sua identidade e sexualidade em três fases de sua vida nas favelas cariocas.",
+    characters: [
+      { name: "Caio", description: "Jovem em busca de sua identidade nas favelas do Rio", voice: "alloy" },
+      { name: "Dona Teresa", description: "Mãe amorosa mas com problemas de vício", voice: "nova" },
+      { name: "Juan", description: "Mentor e figura paterna no morro", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `moonlight-${i+1}`,
+      prompt: `Rio favela coming of age scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/rio%20favela%20coming%20of%20age%20scene%20${i+1}%20moonlight%20style?width=1280&height=720&seed=${5200+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "No Complexo do Alemão, Caio cresce enfrentando desafios de identidade enquanto a cidade maravilhosa se revela cruel e bela." : `Momento ${i+1} da jornada de autodescoberta nas ruas e becos cariocas.`,
+      visualDescription: `Scene ${i+1}: Rio favela setting, coming-of-age drama, three life phases`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20moonlight%20sob%20lua%20carioca%20drama%20rio%20favela%209:16?width=768&height=1366&seed=5002&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-3",
+    title: "O Artista de Rua", 
+    genre: "Drama Musical",
+    style: "Período Brasileiro",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'The Artist' (2011). Um artista de rua em São Paulo dos anos 60 luta para se adaptar às mudanças culturais enquanto busca reconhecimento artístico.",
+    characters: [
+      { name: "Joaquim Santos", description: "Artista de rua apaixonado pela arte tradicional", voice: "alloy" },
+      { name: "Beatriz", description: "Jovem artista moderna que representa o futuro", voice: "nova" },
+      { name: "Seu Antônio", description: "Antigo empresário de espetáculos", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `artista-${i+1}`,
+      prompt: `São Paulo 1960s street artist scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/sao%20paulo%201960s%20street%20artist%20scene%20${i+1}%20vintage%20brazil?width=1280&height=720&seed=${5300+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Na São Paulo dos anos 60, Joaquim Santos encanta multidões com suas performances de rua, mas o mundo está mudando rapidamente." : `Ato ${i+1} da transformação artística e cultural de uma época única.`,
+      visualDescription: `Scene ${i+1}: 1960s São Paulo street performance, vintage Brazil, artistic transformation`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20o%20artista%20de%20rua%20sao%20paulo%201960s%20musical%20drama%209:16?width=768&height=1366&seed=5003&nologo=true`,
+    aspectRatio: "9:16", 
+    type: "movie"
+  },
+  {
+    id: "oscar-4",
+    title: "Cidade Sem Lei",
+    genre: "Thriller",
+    style: "Neo-Western Brasileiro", 
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'No Country for Old Men' (2007). No sertão nordestino, um homem encontra uma mala cheia de dinheiro e desencadeia uma perseguição mortal com um assassino implacável.",
+    characters: [
+      { name: "José da Silva", description: "Homem simples que encontra dinheiro sujo", voice: "alloy" },
+      { name: "O Matador", description: "Assassino frio e filosófico do sertão", voice: "nova" },
+      { name: "Delegado Carvalho", description: "Policial veterano próximo da aposentadoria", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `cidade-${i+1}`,
+      prompt: `Brazilian sertão western thriller scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20sertao%20western%20thriller%20scene%20${i+1}%20neo%20western?width=1280&height=720&seed=${5400+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "No sertão árido da Bahia, José da Silva encontra uma mala de dinheiro que mudará sua vida para sempre." : `Capítulo ${i+1} da perseguição mortal pelos caminhos secos do nordeste.`,
+      visualDescription: `Scene ${i+1}: Brazilian sertão landscape, neo-western thriller, deadly pursuit`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20cidade%20sem%20lei%20sertao%20western%20thriller%209:16?width=768&height=1366&seed=5004&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-5",
+    title: "Crash: Vidas Cruzadas",
+    genre: "Drama", 
+    style: "Drama Social",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'Crash' (2004). Histórias entrelaçadas de pessoas de diferentes classes e etnias em São Paulo, revelando preconceitos e conexões humanas inesperadas.",
+    characters: [
+      { name: "Dr. Roberto", description: "Médico de classe alta com preconceitos ocultos", voice: "alloy" },
+      { name: "Cleusa", description: "Empregada doméstica forte e determinada", voice: "nova" },  
+      { name: "Delegado Santos", description: "Policial negro que enfrenta racismo institucional", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `crash-${i+1}`,
+      prompt: `São Paulo social drama intersecting lives scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/sao%20paulo%20social%20drama%20intersecting%20lives%20scene%20${i+1}?width=1280&height=720&seed=${5500+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Em São Paulo, vidas de diferentes classes sociais se cruzam de maneira inesperada após um acidente de trânsito." : `Entrelaçamento ${i+1} das vidas paulistanas que revelam nossa humanidade comum.`,
+      visualDescription: `Scene ${i+1}: São Paulo urban setting, intersecting social lives, prejudice and connection`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20crash%20vidas%20cruzadas%20sao%20paulo%20social%20drama%209:16?width=768&height=1366&seed=5005&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-6",
+    title: "O Senhor dos Anéis: A Sociedade Dourada",
+    genre: "Fantasia Épica",
+    style: "Aventura Fantástica Brasileira",
+    duration: "2 minutos", 
+    synopsis: "Adaptação brasileira inspirada em 'The Lord of the Rings' (2003). Uma jornada épica pelo Brasil místico para destruir um artefato dourado que ameaça escravizar todas as tribos indígenas.",
+    characters: [
+      { name: "Cauã", description: "Jovem índio escolhido para destruir o artefato", voice: "alloy" },
+      { name: "Pajé Raoni", description: "Sábio xamã guardião dos segredos ancestrais", voice: "nova" },
+      { name: "Iara", description: "Guerreira indígena especialista em combate", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `aneis-${i+1}`,
+      prompt: `Brazilian mystical fantasy adventure scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20mystical%20fantasy%20adventure%20scene%20${i+1}%20indigenous%20epic?width=1280&height=720&seed=${5600+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Na Amazônia mística, Cauã recebe a missão ancestral de destruir o Anel Dourado que corrompe a natureza." : `Jornada ${i+1} pela fauna mágica brasileira em busca da salvação das tribos.`,
+      visualDescription: `Scene ${i+1}: Brazilian mystical landscapes, indigenous fantasy epic, magical realism`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20senhor%20aneis%20sociedade%20dourada%20brazil%20fantasy%209:16?width=768&height=1366&seed=5006&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-7",
+    title: "Uma Mente Brilhante do Sertão",
+    genre: "Drama Biográfico",
+    style: "Drama Psicológico",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'A Beautiful Mind' (2001). A história de um matemático genial do interior que luta contra a esquizofrenia enquanto desenvolve teorias revolucionárias.",
+    characters: [
+      { name: "Professor Antônio", description: "Matemático brilhante do interior nordestino", voice: "alloy" },
+      { name: "Francisca", description: "Esposa dedicada e professora compreensiva", voice: "nova" },
+      { name: "Dr. Medeiros", description: "Psiquiatra que ajuda no tratamento", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `mente-${i+1}`,
+      prompt: `Brazilian mathematical genius psychological drama scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20mathematical%20genius%20psychological%20drama%20scene%20${i+1}?width=1280&height=720&seed=${5700+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Em uma pequena cidade do Ceará, o Professor Antônio desenvolve teorias matemáticas revolucionárias enquanto luta contra sua própria mente." : `Descoberta ${i+1} na jornada entre genialidade e loucura no sertão brasileiro.`,
+      visualDescription: `Scene ${i+1}: Small town Brazil, mathematical genius, psychological struggle with schizophrenia`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20mente%20brilhante%20sertao%20mathematical%20drama%209:16?width=768&height=1366&seed=5007&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-8",
+    title: "Gladiador do Cangaço",
+    genre: "Épico Histórico",
+    style: "Western Nordestino",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'Gladiator' (2000). Um cangaceiro traído busca vingança contra o coronel que matou sua família, tornando-se uma lenda no sertão.",
+    characters: [
+      { name: "Severino", description: "Ex-cangaceiro em busca de vingança", voice: "alloy" },
+      { name: "Coronel Farias", description: "Latifundiário cruel e ambicioso", voice: "nova" },
+      { name: "Maria Bonita", description: "Cangaceira corajosa e companheira leal", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `gladiador-${i+1}`,
+      prompt: `Brazilian cangaço western epic scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20cangaco%20western%20epic%20scene%20${i+1}%20sertao%20warrior?width=1280&height=720&seed=${5800+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "No sertão árido, Severino jura vingança contra o Coronel Farias que destruiu sua família e sua honra." : `Batalha ${i+1} na saga épica de vingança pelos caminhos secos do nordeste.`,
+      visualDescription: `Scene ${i+1}: Brazilian sertão, cangaço warriors, epic revenge western`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20gladiador%20cangaco%20sertao%20western%20epic%209:16?width=768&height=1366&seed=5008&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-9",
+    title: "Beleza Paulistana",
+    genre: "Drama",
+    style: "Drama Suburbano",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'American Beauty' (1999). Um publicitário de meia-idade em São Paulo questiona sua vida superficial e se apaixona pela melhor amiga de sua filha adolescente.",
+    characters: [
+      { name: "Ricardo Mendes", description: "Publicitário de meia-idade em crise existencial", voice: "alloy" },
+      { name: "Carla", description: "Esposa ambiciosa e materialista", voice: "nova" },
+      { name: "Júlia", description: "Filha adolescente rebelde", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `beleza-${i+1}`,
+      prompt: `São Paulo suburban middle-age crisis drama scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/sao%20paulo%20suburban%20middle%20age%20crisis%20drama%20scene%20${i+1}?width=1280&height=720&seed=${5900+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Em um condomínio de classe média alta em São Paulo, Ricardo questiona se sua vida perfeita realmente vale a pena." : `Reflexão ${i+1} sobre a futilidade da vida burguesa paulistana contemporânea.`,
+      visualDescription: `Scene ${i+1}: São Paulo suburbs, middle-class crisis, existential drama`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20beleza%20paulistana%20suburban%20drama%20sao%20paulo%209:16?width=768&height=1366&seed=5009&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-10",
+    title: "Shakespeare Apaixonado na Bahia",
+    genre: "Romance Histórico",
+    style: "Comédia Romântica Barroca",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'Shakespeare in Love' (1998). Um dramaturgo português no Brasil colonial se apaixona por uma atriz disfarçada de homem durante os primeiros teatros baianos.",
+    characters: [
+      { name: "Dom Francisco", description: "Dramaturgo português em Salvador colonial", voice: "alloy" },
+      { name: "Isabel", description: "Jovem atriz disfarçada de homem", voice: "nova" },
+      { name: "Padre Vieira", description: "Jesuíta patrono das artes na Bahia", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `shakespeare-${i+1}`,
+      prompt: `Colonial Salvador theater romance scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/colonial%20salvador%20theater%20romance%20scene%20${i+1}%20baroque%20brazil?width=1280&height=720&seed=${6000+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Na Salvador colonial, Dom Francisco busca inspiração para suas peças enquanto se apaixona perdidamente por uma misteriosa atriz." : `Ato ${i+1} da comédia romântica nos palcos barrocos da Bahia colonial.`,
+      visualDescription: `Scene ${i+1}: Colonial Salvador, baroque theater, romantic comedy, Portuguese Brazil`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20shakespeare%20apaixonado%20bahia%20colonial%20romance%209:16?width=768&height=1366&seed=5010&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-11",
+    title: "Titanic do Rio",
+    genre: "Romance Épico",
+    style: "Drama Romântico",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'Titanic' (1997). Romance impossível entre uma socialite carioca e um artista pobre durante a tragédia do naufrágio de um navio de luxo na costa brasileira.",
+    characters: [
+      { name: "Helena Montenegro", description: "Socialite carioca de família tradicional", voice: "nova" },
+      { name: "João Santos", description: "Artista pobre e sonhador", voice: "alloy" },
+      { name: "Capitão Oliveira", description: "Comandante experiente do navio", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `titanic-${i+1}`,
+      prompt: `Brazilian luxury ship romance tragedy scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20luxury%20ship%20romance%20tragedy%20scene%20${i+1}%20rio%20coast?width=1280&height=720&seed=${6100+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "A bordo do luxuoso vapor 'Santos Dumont', Helena e João vivem um amor impossível enquanto navegam pela costa brasileira." : `Drama ${i+1} do romance épico que desafia classes sociais em alto mar.`,
+      visualDescription: `Scene ${i+1}: Luxury Brazilian ship, romantic tragedy, Rio coastline, class differences`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20titanic%20rio%20luxury%20ship%20romance%209:16?width=768&height=1366&seed=5011&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-12",
+    title: "O Paciente Inglês do Nordeste",
+    genre: "Drama de Guerra",
+    style: "Drama Histórico", 
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'The English Patient' (1996). Durante a Segunda Guerra, um piloto ferido em hospital no Recife relembra seu amor proibido por uma mulher casada no Norte da África.",
+    characters: [
+      { name: "Capitão James", description: "Piloto inglês ferido e misterioso", voice: "alloy" },
+      { name: "Enfermeira Ana", description: "Enfermeira brasileira dedicada", voice: "nova" },
+      { name: "Katherine", description: "Mulher casada do passado trágico", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `paciente-${i+1}`,
+      prompt: `WWII Recife hospital war drama scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/wwii%20recife%20hospital%20war%20drama%20scene%20${i+1}%20brazil%201940s?width=1280&height=720&seed=${6200+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Em um hospital militar no Recife, um piloto ferido conta sua história de amor e guerra no deserto africano." : `Memória ${i+1} dos amores e perdas durante os tempos sombrios da guerra mundial.`,
+      visualDescription: `Scene ${i+1}: 1940s Recife hospital, war drama, forbidden love memories`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20paciente%20ingles%20nordeste%20war%20drama%209:16?width=768&height=1366&seed=5012&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-13",
+    title: "Coração Valente Cangaceiro",
+    genre: "Épico Histórico",
+    style: "Drama de Guerra Nordestino",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'Braveheart' (1995). A luta épica de um líder cangaceiro pela liberdade do seu povo contra a opressão dos coronéis no sertão brasileiro.",
+    characters: [
+      { name: "Antônio Conselheiro", description: "Líder carismático dos oprimidos do sertão", voice: "alloy" },
+      { name: "Maria da Gloria", description: "Guerreira cangaceira e amor de Antônio", voice: "nova" },
+      { name: "Coronel Barreto", description: "Latifundiário cruel e opressor", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `coracao-${i+1}`,
+      prompt: `Brazilian sertão freedom fighter epic scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20sertao%20freedom%20fighter%20epic%20scene%20${i+1}%20cangaceiro%20war?width=1280&height=720&seed=${6300+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "No sertão da Bahia, Antônio Conselheiro lidera seu povo contra a tirania dos coronéis que escravizam os pobres." : `Batalha ${i+1} pela liberdade nos campos áridos do nordeste brasileiro.`,
+      visualDescription: `Scene ${i+1}: Brazilian sertão, freedom fighters, epic war against oppression`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20coracao%20valente%20cangaceiro%20sertao%20epic%209:16?width=768&height=1366&seed=5013&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-14",
+    title: "Forrest Gump: O Brasileiro",
+    genre: "Drama Comédia",
+    style: "Fábula Brasileira",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'Forrest Gump' (1994). Um homem simples do interior atravessa décadas da história brasileira, presenciando momentos cruciais do país por acaso.",
+    characters: [
+      { name: "Zé Gump", description: "Homem simples que vive grandes momentos históricos", voice: "alloy" },
+      { name: "Dona Maria", description: "Mãe sábia e amorosa de Zé", voice: "nova" },
+      { name: "Jenny", description: "Amor da infância de Zé", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `forrest-${i+1}`,
+      prompt: `Brazilian historical comedy drama scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20historical%20comedy%20drama%20scene%20${i+1}%20decades%20brazil?width=1280&height=720&seed=${6400+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Sentado em uma praça de Brasília, Zé Gump conta sua incrível jornada através da história do Brasil." : `Capítulo ${i+1} da jornada extraordinária de um homem comum em tempos extraordinários.`,
+      visualDescription: `Scene ${i+1}: Brazilian historical moments, simple man extraordinary life, decades of Brazil`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20forrest%20gump%20brasileiro%20historical%20comedy%209:16?width=768&height=1366&seed=5014&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-15",
+    title: "A Lista de Schindler do Brasil",
+    genre: "Drama Histórico",
+    style: "Drama de Guerra",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'Schindler's List' (1993). Durante a ditadura militar, um empresário brasileiro arriscas sua vida para salvar intelectuais e artistas perseguidos pelo regime.",
+    characters: [
+      { name: "Carlos Schindler", description: "Empresário corajoso que salva perseguidos", voice: "alloy" },
+      { name: "Professor Lima", description: "Intelectual perseguido pela ditadura", voice: "nova" },
+      { name: "Coronel Santos", description: "Militar radical do regime", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `schindler-${i+1}`,
+      prompt: `Brazilian military dictatorship resistance scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20military%20dictatorship%20resistance%20scene%20${i+1}%201970s?width=1280&height=720&seed=${6500+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Durante os anos de chumbo, Carlos Schindler usa sua fábrica para proteger intelectuais perseguidos pela ditadura militar." : `Resgate ${i+1} dos brasileiros que lutaram contra a opressão nos anos sombrios.`,
+      visualDescription: `Scene ${i+1}: 1970s Brazil military dictatorship, intellectual persecution, brave rescue`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20lista%20schindler%20brasil%20dictatorship%20drama%209:16?width=768&height=1366&seed=5015&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-16",
+    title: "Os Imperdoáveis do Sertão",
+    genre: "Western",
+    style: "Western Nordestino",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'Unforgiven' (1992). Um ex-cangaceiro aposentado volta à vida de violência para uma última missão de vingança no sertão árido.",
+    characters: [
+      { name: "Virgulino Velho", description: "Ex-cangaceiro aposentado e arrependido", voice: "alloy" },
+      { name: "Zé Pequeno", description: "Jovem cangaceiro ambicioso", voice: "nova" },
+      { name: "Xerife Morais", description: "Xerife corrupto e cruel", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `imperdoaveis-${i+1}`,
+      prompt: `Brazilian sertão retired gunfighter western scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20sertao%20retired%20gunfighter%20western%20scene%20${i+1}%20unforgiven?width=1280&height=720&seed=${6600+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Virgulino, ex-cangaceiro que trocou a violência pela paz, é forçado a pegar em armas uma última vez." : `Confronto ${i+1} na jornada final de um homem que tenta esquecer seu passado sanguinário.`,
+      visualDescription: `Scene ${i+1}: Brazilian sertão, retired cangaceiro, final violent mission`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20imperdoaveis%20sertao%20western%20unforgiven%209:16?width=768&height=1366&seed=5016&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-17",
+    title: "O Silêncio dos Inocentes da Amazônia",
+    genre: "Thriller Psicológico",
+    style: "Terror Psicológico",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'The Silence of the Lambs' (1991). Uma agente federal novata deve consultar um psicopata genial para capturar um serial killer na Amazônia brasileira.",
+    characters: [
+      { name: "Agente Clarice", description: "Agente federal jovem e determinada", voice: "nova" },
+      { name: "Dr. Lecter", description: "Psiquiatra genial e perigoso", voice: "alloy" },
+      { name: "O Casulo", description: "Serial killer que aterroriza a Amazônia", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `silencio-${i+1}`,
+      prompt: `Amazon psychological thriller FBI scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/amazon%20psychological%20thriller%20fbi%20scene%20${i+1}%20brazil%20forest?width=1280&height=720&seed=${6700+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Na Amazônia, a Agente Clarice busca ajuda de um psicopata brilhante para capturar um serial killer que aterroriza a floresta." : `Investigação ${i+1} nos mistérios sombrios da mente criminosa amazônica.`,
+      visualDescription: `Scene ${i+1}: Amazon rainforest, psychological thriller, FBI investigation, criminal minds`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20silencio%20inocentes%20amazonia%20thriller%209:16?width=768&height=1366&seed=5017&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-18",
+    title: "Dança com Lobos-Guará",
+    genre: "Drama Épico",
+    style: "Western Brasileiro",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'Dances with Wolves' (1990). Um soldado brasileiro do século XIX desenvolve profundo respeito pela cultura indígena durante sua missão no Pantanal.",
+    characters: [
+      { name: "Tenente Silva", description: "Soldado que aprende a respeitar os índios", voice: "alloy" },
+      { name: "Cacique Raoni", description: "Líder sábio da tribo pantaneira", voice: "nova" },
+      { name: "Ainá", description: "Guerreira indígena corajosa", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `lobos-${i+1}`,
+      prompt: `Brazilian Pantanal indigenous culture scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20pantanal%20indigenous%20culture%20scene%20${i+1}%20soldiers%20natives?width=1280&height=720&seed=${6800+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "No Pantanal do século XIX, o Tenente Silva descobre que os 'selvagens' são mais civilizados que seus próprios compatriotas." : `Descoberta ${i+1} da rica cultura indígena nas planícies alagadas brasileiras.`,
+      visualDescription: `Scene ${i+1}: 19th century Pantanal, Brazilian soldier, indigenous culture respect`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20danca%20lobos%20guara%20pantanal%20indigenous%209:16?width=768&height=1366&seed=5018&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-19",
+    title: "Rain Man Brasileiro",
+    genre: "Drama",
+    style: "Road Movie Nacional",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'Rain Man' (1988). Dois irmãos fazem uma jornada de carro pelo Brasil, descobrindo que um deles tem autismo e habilidades extraordinárias.",
+    characters: [
+      { name: "Charlie Santos", description: "Empresário egoísta e ambicioso", voice: "alloy" },
+      { name: "Raimundo", description: "Irmão autista com habilidades especiais", voice: "nova" },
+      { name: "Dr. Oliveira", description: "Médico que cuida de Raimundo", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `rain-${i+1}`,
+      prompt: `Brazilian road trip autism drama scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20road%20trip%20autism%20drama%20scene%20${i+1}%20brothers%20journey?width=1280&height=720&seed=${6900+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "Charlie descobre que tem um irmão autista genial e embarca numa jornada de São Paulo ao Rio que mudará suas vidas." : `Quilômetro ${i+1} da viagem transformadora entre dois irmãos pelas estradas brasileiras.`,
+      visualDescription: `Scene ${i+1}: Brazilian highways, brothers road trip, autism understanding, family bond`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20rain%20man%20brasileiro%20road%20trip%20drama%209:16?width=768&height=1366&seed=5019&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  },
+  {
+    id: "oscar-20",
+    title: "O Último Imperador de Petrópolis",
+    genre: "Drama Histórico",
+    style: "Épico Histórico Brasileiro",
+    duration: "2 minutos",
+    synopsis: "Adaptação brasileira inspirada em 'The Last Emperor' (1987). A vida do último imperador do Brasil, Dom Pedro II, desde sua coroação até o exílio, retratando o fim do império brasileiro.",
+    characters: [
+      { name: "Dom Pedro II", description: "Último imperador do Brasil, sábio e melancólico", voice: "alloy" },
+      { name: "Princesa Isabel", description: "Filha progressista e abolicionista", voice: "nova" },
+      { name: "Deodoro da Fonseca", description: "Marechal que proclama a república", voice: "echo" }
+    ],
+    scenes: Array.from({length: 30}, (_, i) => ({
+      id: `imperador-${i+1}`,
+      prompt: `Brazilian empire historical drama scene ${i+1}`,
+      imageUrl: `https://image.pollinations.ai/prompt/brazilian%20empire%20historical%20drama%20scene%20${i+1}%20dom%20pedro%20ii?width=1280&height=720&seed=${7000+i}&nologo=true`,
+      audioUrl: "",
+      duration: 4,
+      text: i === 0 ? "No Palácio de Petrópolis, Dom Pedro II reflete sobre o fim do império que governou por quase 50 anos." : `Era ${i+1} da transição do Brasil imperial para a república nascente.`,
+      visualDescription: `Scene ${i+1}: 19th century Brazilian empire, Dom Pedro II, imperial palace, end of monarchy`
+    })),
+    createdAt: "2024-01-07",
+    thumbnail: `https://image.pollinations.ai/prompt/movie%20poster%20ultimo%20imperador%20petropolis%20brazilian%20empire%209:16?width=768&height=1366&seed=5020&nologo=true`,
+    aspectRatio: "9:16",
+    type: "movie"
+  }
+];
+
+// Combinar filmes originais com filmes baseados no Oscar
+export const FEATURED_MOVIES_COMPLETE = [...FEATURED_MOVIES, ...OSCAR_BASED_MOVIES];
